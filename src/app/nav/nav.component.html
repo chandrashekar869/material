@@ -1,0 +1,159 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="false">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content style="width: 100%;overflow-x:hidden;">
+    <mat-toolbar style="z-index: 1000;" color="primary">
+      <button style="display:none;"
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="row" style="width:100%;margin:0 0% 0 0%">
+        <div class="col-4">
+        <img style="position:absolute;left:0;" src="https://nikhilp.org/images/logos/p-logo.svg" class="img-responsive" width="40px" height="40px" style="margin:0 0 0 5%;">
+        </div>  
+        <div class="col-3">
+
+         </div>
+        <div class=" col-1">
+              <h3>About</h3>
+        </div>  
+        <div class=" col-1">
+            <h3>Team</h3>
+        </div>
+        <div class="col-1">
+            <h3>Blog</h3>
+         </div>    
+         <div class="col-1">
+            <h3>Contact</h3>
+         </div>
+         <div class="col-1">
+
+          </div>
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    
+<div [hidden]="!showSpinner" class="container h-100" style="position:fixed;">
+    <div class="row h-100 justify-content-center align-items-center"> 
+    <mat-progress-spinner 
+    class="example-margin"
+    [color]="'primary'"
+    [mode]="'indeterminate'"
+    [value]="50">
+</mat-progress-spinner>
+</div>
+</div>
+    <div  [style.background-color]="showSpinner==true?'rgba(0,0,0,0.9)':'rgba(0,0,0,0.6)'" style="height: auto;width:auto;background-color:rgba(0,0,0,0.9);">
+        <div class="row" style="padding:5%;color:white;">
+          <div class="col-7">
+            <div class="row" style="padding:0% 5% 2% 5%;color:white;">
+                <div class="col-12">
+                    <h1>Lorem Ipsum</h1>
+                    </div>  
+                  </div>
+                  <div class="row" style="padding:0% 5% 2% 5%;color:white;">
+                      <div class="col-12">
+                      <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.              </p>
+                      </div>  
+                    </div>
+                    <div class="row" style="padding:0% 5% 0% 5%;color:white;">
+                      <div class="col-12">  
+                        <div class="row">
+                            <div class="col-1">
+                          <mat-icon style="font-size: 2.5rem;" color="primary">location_on</mat-icon>
+                             </div> 
+                          <div class="col-11">
+                        <h2>
+                            Get in Touch
+                        </h2>
+                        </div>
+                      </div>
+                      <div class="row">
+                          <div class="offset-1 col-11">
+                          <p>
+                              Lorem ipsum dolor sit amet, at vis elitr impetus adipisci, alterum repudiare no vis, saepe mentitum volutpat ad sed. Sit at primis mentitum percipitur
+                          </p>
+                          </div>
+                        </div>
+                        </div>  
+                      </div>
+                      <div class="row" style="padding:0% 5% 0% 5%;color:white;">
+                          <div class="col-12">  
+                            <div class="row">
+                                <div class="col-1">
+                                    <mat-icon style="font-size: 2.5rem;" color="primary">phone</mat-icon>
+                                       </div> 
+                  
+                              <div class="col-11">
+                            <h2>
+                                Contact Us
+                            </h2>
+                            </div>
+                          </div>
+                          <div class="row">
+                              <div class="offset-1 col-11">
+                              <p>Name: Jane Doe</p>
+                              <p>Phone: +917259284709</p>
+                              <p>Email: shekard.chandra869@gmail.com</p>
+                              </div>
+                            </div>
+                            </div>  
+                    
+            </div>
+          </div>
+          <div class="col-5">
+            <mat-card style="background-color:rgba(1,1,1,0.8);">
+                <mat-card-title style="padding:3%;background-color: #c33e5b;text-align: center" >
+                Fill out your details
+                </mat-card-title>
+              <mat-card-content>
+                  <form [hidden]="showSpinner"  class="example-form">
+                      <mat-form-field >
+                        <input  matInput placeholder="First Name" >
+                      </mat-form-field>
+                      <mat-form-field >
+                          <input matInput placeholder="Last Name" >
+                        </mat-form-field>
+                        <mat-form-field >
+                          <span matPrefix>+91 &nbsp;</span>
+                            <input matInput type="tel" placeholder="Phone Number" >
+                          </mat-form-field>  
+                          <mat-form-field >
+                              <input [formControl]="emailFormControl" matInput type="email" name="email" placeholder="Email" >
+                              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')"  >
+                              Error in email
+                              </mat-error> 
+                          </mat-form-field>
+                          <mat-form-field >
+                              <input matInput placeholder="Select City" [formControl]="cityFormControl" [matAutocomplete]="auto" >
+                            </mat-form-field>    
+                            <mat-autocomplete #auto="matAutocomplete">
+                                <mat-option *ngFor="let city of arr" [value]="city">{{city}}</mat-option>
+                            </mat-autocomplete>        
+                            <button mat-raised-button color="primary">Submit</button>
+                  </form>
+              </mat-card-content>  
+            </mat-card>
+          </div>
+        </div>
+      </div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
